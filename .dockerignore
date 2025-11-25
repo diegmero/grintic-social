@@ -1,0 +1,48 @@
+# Build artifacts
+_build/
+deps/
+*.ez
+
+# Development files
+.git/
+.gitignore
+.env
+.env.*
+!.env.example
+
+# Node modules (if any)
+node_modules/
+assets/node_modules/
+
+# Test files
+test/
+.dialyzer/
+cover/
+
+# Documentation
+doc/
+docs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+erl_crash.dump
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/

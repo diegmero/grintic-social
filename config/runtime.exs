@@ -20,14 +20,8 @@ if System.get_env("PHX_SERVER") do
   config :grintic, GrinticWeb.Endpoint, server: true
 end
 
-if config_env() == :prod do
-  database_url =
-    System.get_env("DATABASE_URL") ||
-      raise """
-      environment variable DATABASE_URL is missing.
-      For example: ecto://USER:PASS@HOST/DATABASE
-      """
-
+# Configure database if DATABASE_URL is present (for Docker/production)
+if database_url = System.get_env("DATABASE_URL") do
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
   config :grintic, Grintic.Repo,
@@ -37,6 +31,9 @@ if config_env() == :prod do
     # For machines with several cores, consider starting multiple pools of `pool_size`
     # pool_count: 4,
     socket_options: maybe_ipv6
+end
+
+if config_env() == :prod do
 
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
