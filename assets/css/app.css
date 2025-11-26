@@ -100,6 +100,75 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 /* Make LiveView wrapper divs transparent for layout */
-[data-phx-session], [data-phx-teleported-src] { display: contents }
+[data-phx-session],
+[data-phx-teleported-src] {
+  display: contents
+}
 
 /* This file is for your main application CSS */
+
+/* ===== SISTEMA DE TIPOGRAFÍA SIMPLIFICADO ===== */
+/* 2 FUENTES: Inter para títulos y textos */
+/* 3 COLORES: Naranja, Azul, Verde */
+
+.prose {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* TÍTULOS - Inter con font-weight alto */
+.prose h3:not(.card-title) {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1rem !important;
+  letter-spacing: -0.01em;
+}
+
+.prose h4:not(.card-title) {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* TEXTOS - Inter normal */
+.prose>p,
+.prose>div>p {
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1rem !important;
+  font-weight: 400;
+}
+
+/* Asegurar que los componentes mantengan sus estilos */
+.btn,
+.alert,
+.card,
+.badge,
+.input,
+.select,
+.textarea {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: revert !important;
+  line-height: revert !important;
+  margin: revert !important;
+}
+
+/* BOTONES - Inter con font-weight medio */
+.btn {
+  font-weight: 500 !important;
+}
+
+/* Listas */
+.prose li {
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Strong y énfasis */
+.prose strong {
+  font-weight: 600 !important;
+}

@@ -443,6 +443,106 @@ defmodule GrinticWeb.CoreComponents do
   end
 
   @doc """
+  Renders a side modal that slides in from the right.
+
+  ## Examples
+
+      <.side_modal id="info-modal">
+        <div>Modal content here</div>
+      </.side_modal>
+
+      <button phx-click={show_side_modal("info-modal")}>Open Modal</button>
+  """
+  attr :id, :string, required: true
+  attr :title, :string, default: nil
+  attr :on_cancel, JS, default: %JS{}
+  slot :inner_block, required: true
+
+  def side_modal(assigns) do
+    ~H"""
+    <div
+      id={@id}
+      phx-remove={hide_side_modal(@id)}
+      class="hidden"
+    >
+      <!-- Backdrop overlay -->
+      <div
+        id={"#{@id}-backdrop"}
+        class="fixed inset-0 bg-black/50 transition-opacity z-40"
+        aria-hidden="true"
+        phx-click={JS.exec(@on_cancel, "phx-remove")}
+      />
+          <!-- Modal panel -->
+      <div
+        id={"#{@id}-panel"}
+        class="fixed inset-y-0 right-0 w-full sm:w-2/3 lg:w-1/2 xl:w-2/5 bg-base-100 shadow-2xl z-50 flex flex-col"
+        style="max-height: 100vh;"
+        role="dialog"
+        aria-modal="true"
+        phx-click-away={JS.exec(@on_cancel, "phx-remove")}
+      >
+        <!-- Header con diseño más cálido -->
+        <div class="flex items-center justify-between px-8 py-6 border-b border-base-300 bg-gradient-to-r from-primary/5 to-transparent">
+          <h2 :if={@title} class="text-2xl font-bold text-base-content">{@title}</h2>
+          <button
+            type="button"
+            phx-click={JS.exec(@on_cancel, "phx-remove")}
+            class="btn btn-ghost btn-sm btn-circle hover:bg-base-200"
+            aria-label={gettext("close")}
+          >
+            <.icon name="hero-x-mark" class="h-6 w-6" />
+          </button>
+        </div>
+
+        <!-- Scrollable content con tipografía mejorada -->
+        <div class="flex-1 overflow-y-auto px-8 py-6" style="max-height: calc(100vh - 88px);">
+          <div class="prose prose-lg max-w-none prose-headings:font-semibold prose-headings:text-base-content prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:leading-snug prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3 prose-h4:leading-snug prose-p:text-lg prose-p:leading-loose prose-p:text-base-content/85 prose-li:text-lg prose-li:leading-loose prose-li:text-base-content/85 prose-strong:text-base-content prose-strong:font-semibold">
+            {render_slot(@inner_block)}
+          </div>
+        </div>
+      </div>
+    </div>
+    """
+  end
+
+  @doc """
+  Shows the side modal.
+  """
+  def show_side_modal(js \\ %JS{}, id) when is_binary(id) do
+    js
+    |> JS.show(to: "##{id}")
+    |> JS.show(
+      to: "##{id}-backdrop",
+      transition: {"transition-opacity ease-out duration-300", "opacity-0", "opacity-100"}
+    )
+    |> JS.show(
+      to: "##{id}-panel",
+      transition:
+        {"transition-transform ease-out duration-300", "translate-x-full", "translate-x-0"}
+    )
+    |> JS.add_class("overflow-hidden", to: "body")
+  end
+
+  @doc """
+  Hides the side modal.
+  """
+  def hide_side_modal(js \\ %JS{}, id) do
+    js
+    |> JS.hide(
+      to: "##{id}-backdrop",
+      transition: {"transition-opacity ease-in duration-200", "opacity-100", "opacity-0"}
+    )
+    |> JS.hide(
+      to: "##{id}-panel",
+      time: 200,
+      transition:
+        {"transition-transform ease-in duration-200", "translate-x-0", "translate-x-full"}
+    )
+    |> JS.hide(to: "##{id}", transition: {"block", "block", "hidden"})
+    |> JS.remove_class("overflow-hidden", to: "body")
+  end
+
+  @doc """
   Translates an error message using gettext.
   """
   def translate_error({msg, opts}) do

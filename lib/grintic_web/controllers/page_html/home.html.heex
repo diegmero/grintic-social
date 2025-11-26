@@ -47,10 +47,10 @@
       />
     </svg>
     <div class="mt-10 flex justify-between items-center">
-      <h1 class="flex items-center text-sm font-semibold leading-6">
-        Bienvenidos a GrinTic
-        <small class="badge badge-warning badge-sm ml-3">
-          v{Application.spec(:grintic, :vsn)}
+      <h1 class="flex items-center gap-1 text-sm font-semibold leading-6">
+        Bienvenidos a GrinTic 
+        <small class="badge badge-warning badge-sm">
+           v{Application.spec(:grintic, :vsn)}
         </small>
       </h1>
       <Layouts.theme_toggle />
@@ -69,7 +69,7 @@
             href="https://hexdocs.pm/phoenix/overview.html"
             class="group relative rounded-box px-6 py-4 text-sm font-semibold leading-6 sm:py-6"
           >
-            <span class="absolute inset-0 rounded-box bg-base-200 transition group-hover:bg-base-300 sm:group-hover:scale-105">
+            <span class="absolute inset-0 rounded-box bg-base-300 transition group-hover:bg-base-300 sm:group-hover:scale-105">
             </span>
             <span class="relative flex items-center gap-4 sm:flex-col">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6">
@@ -89,7 +89,7 @@
             href="https://github.com/phoenixframework/phoenix"
             class="group relative rounded-box px-6 py-4 text-sm font-semibold leading-6 sm:py-6"
           >
-            <span class="absolute inset-0 rounded-box bg-base-200 transition group-hover:bg-base-300 sm:group-hover:scale-105">
+            <span class="absolute inset-0 rounded-box bg-base-300 transition group-hover:bg-base-300 sm:group-hover:scale-105">
             </span>
             <span class="relative flex items-center gap-4 sm:flex-col">
               <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6">
@@ -107,7 +107,7 @@
             href={"https://github.com/phoenixframework/phoenix/blob/v#{Application.spec(:phoenix, :vsn)}/CHANGELOG.md"}
             class="group relative rounded-box px-6 py-4 text-sm font-semibold leading-6 sm:py-6"
           >
-            <span class="absolute inset-0 rounded-box bg-base-200 transition group-hover:bg-base-300 sm:group-hover:scale-105">
+            <span class="absolute inset-0 rounded-box bg-base-300 transition group-hover:bg-base-300 sm:group-hover:scale-105">
             </span>
             <span class="relative flex items-center gap-4 sm:flex-col">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6">
@@ -136,51 +136,500 @@
         </div>
         <div class="mt-10 grid grid-cols-1 gap-y-4 text-sm leading-6 text-base-content/80 sm:grid-cols-2">
           <div>
-            <a
-              href="#"
-              class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-base-200 hover:text-base-content"
+            <button
+              type="button"
+              phx-click={show_side_modal("como-funciona-modal")}
+              class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-base-300 hover:text-base-content cursor-pointer"
             >
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-base-200">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-base-300">
                 <.icon name="hero-question-mark-circle" class="h-4 w-4" />
               </div>
               ¿Cómo funciona?
-            </a>
+            </button>
           </div>
           <div>
-            <a
-              href="#"
-              class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-base-200 hover:text-base-content"
+            <button
+              type="button"
+              phx-click={show_side_modal("iniciar-solicitud-modal")}
+              class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-base-300 hover:text-base-content cursor-pointer"
             >
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-base-200">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-base-300">
                 <.icon name="hero-document-text" class="h-4 w-4" />
               </div>
               Iniciar solicitud
-            </a>
+            </button>
           </div>
           <div>
-            <a
-              href="#"
-              class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-base-200 hover:text-base-content"
+            <button
+              type="button"
+              phx-click={show_side_modal("comunidad-modal")}
+              class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-base-300 hover:text-base-content cursor-pointer"
             >
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-base-200">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-base-300">
                 <.icon name="hero-user-group" class="h-4 w-4" />
               </div>
               Comunidad GrinTic
-            </a>
+            </button>
           </div>
           <div>
-            <a
-              href="#"
-              class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-base-200 hover:text-base-content"
+            <button
+              type="button"
+              phx-click={show_side_modal("requisitos-modal")}
+              class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-base-300 hover:text-base-content cursor-pointer"
             >
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-base-200">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-base-300">
                 <.icon name="hero-clipboard-document-list" class="h-4 w-4" />
               </div>
               Requisitos
-            </a>
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Modales Laterales -->
+<.side_modal id="como-funciona-modal" title="¿Cómo funciona?" on_cancel={hide_side_modal("como-funciona-modal")}>
+  <img src="/images/modals/como-funciona.png" alt="Cómo funciona GrinTic" class="w-full h-64 object-cover rounded-2xl mb-6" />
+  <div class="space-y-6">
+    <p class="text-lg leading-relaxed">
+      GrinTic conecta profesionales tech con organizaciones que transforman comunidades. 
+      Ofrecemos infraestructura y servicios tecnológicos para potenciar su impacto social.
+    </p>
+    
+    <div class="bg-primary/5 rounded-lg p-6 border-l-4 border-primary">
+      <h3 class="text-xl font-bold mb-3 text-primary">Nuestra Misión</h3>
+      <p class="text-base leading-relaxed">
+        Democratizar el acceso a tecnología de calidad para fundaciones y organizaciones 
+        sin fines de lucro en Latinoamérica.
+      </p>
+    </div>
+
+    <h3 class="text-xl font-bold mt-8 mb-4">Proceso Simple en 4 Pasos</h3>
+    
+    <div class="space-y-4">
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-400/80 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          1
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Explore nuestros servicios</h4>
+          <p class="text-base-content/70">Revise qué podemos ofrecer: hosting, desarrollo, capacitación y más.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-400/80 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          2
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Verifique los requisitos</h4>
+          <p class="text-base-content/70">Asegúrese de cumplir con los criterios básicos para organizaciones.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-400/80 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          3
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Envíe su solicitud</h4>
+          <p class="text-base-content/70">Complete el formulario con información sobre su organización y proyecto.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-400/80 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          4
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Nos ponemos en contacto</h4>
+          <p class="text-base-content/70">Nuestro equipo evaluará su solicitud y le contactará en máximo 5 días hábiles.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-base-300 rounded-lg p-6 mt-8 border-l-4 border-orange-400">
+      <div class="flex gap-3">
+        <div>
+          <h4 class="font-bold text-lg mb-3 text-orange-600">¿Cuál es el costo?</h4>
+          <p class="text-base-content/90 leading-relaxed mb-3">
+            <strong class="text-xl">¡Completamente gratis!</strong>
+          </p>
+          <p class="text-base-content/80 leading-relaxed mb-4">
+            No pedimos donaciones. No pedimos créditos. No pedimos nada a cambio.
+          </p>
+          <div class="bg-base-100 rounded-lg p-4 border border-base-300">
+            <p class="text-base-content/90 leading-relaxed font-medium">
+              Solo le pedimos una cosa: <span class="text-orange-600 font-bold">que no pare de ayudar</span>.
+            </p>
+            <p class="text-base-content/70 leading-relaxed mt-2 text-sm">
+              Cada comunidad que transforma, cada vida que toca, cada sonrisa que genera... 
+              eso es lo que nos impulsa. Su impacto social es nuestra mayor recompensa.
+            </p>
+          </div>
+          <p class="text-base-content/70 leading-relaxed mt-4 italic text-sm">
+            ❤️ Mientras usted siga cambiando vidas, nosotros seguiremos apoyándole con tecnología.
+          </p>
+        </div>
+      </div>
+    </div> <h3 class="text-xl font-bold mt-8 mb-4">Beneficios para su Organización</h3>
+    
+    <div class="grid gap-4">
+      <div class="p-4 rounded-lg bg-base-300/50 hover:bg-base-300 transition-colors">
+        <div class="flex items-center gap-3">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-base-300 flex items-center justify-center">
+            <.icon name="hero-cloud" class="h-6 w-6 text-base-content" />
+          </div>
+          <div>
+            <h4 class="font-bold mb-1">Infraestructura Cloud Profesional</h4>
+            <p class="text-sm text-base-content/70">Hosting confiable y escalable para tus aplicaciones</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-lg bg-base-300/50 hover:bg-base-300 transition-colors">
+        <div class="flex items-center gap-3">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-base-300 flex items-center justify-center">
+            <.icon name="hero-code-bracket" class="h-6 w-6 text-base-content" />
+          </div>
+          <div>
+            <h4 class="font-bold mb-1">Desarrollo Web a Medida</h4>
+            <p class="text-sm text-base-content/70">Sitios y aplicaciones diseñadas para tus necesidades</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-lg bg-base-300/50 hover:bg-base-300 transition-colors">
+        <div class="flex items-center gap-3">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-base-300 flex items-center justify-center">
+            <.icon name="hero-academic-cap" class="h-6 w-6 text-base-content" />
+          </div>
+          <div>
+            <h4 class="font-bold mb-1">Capacitación y Soporte</h4>
+            <p class="text-sm text-base-content/70">Aprende a gestionar tus propias herramientas digitales</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-lg bg-base-300/50 hover:bg-base-300 transition-colors">
+        <div class="flex items-center gap-3">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-base-300 flex items-center justify-center">
+            <.icon name="hero-users" class="h-6 w-6 text-base-content" />
+          </div>
+          <div>
+            <h4 class="font-bold mb-1">Comunidad Activa</h4>
+            <p class="text-sm text-base-content/70">Conéctate con otras organizaciones y expertos tech</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-base-300">
+      <button class="btn btn-lg w-full bg-orange-400 hover:bg-orange-500 text-white border-none shadow-lg" phx-click={show_side_modal("iniciar-solicitud-modal")}>
+        <.icon name="hero-paper-airplane" class="h-5 w-5" />
+        Iniciar Mi Solicitud
+      </button>
+    </div>
+  </div>
+</.side_modal>
+
+<.side_modal
+  id="iniciar-solicitud-modal"
+  title="Iniciar Solicitud"
+  on_cancel={hide_side_modal("iniciar-solicitud-modal")}
+>
+  <img src="/images/modals/iniciar-solicitud.png" alt="Iniciar solicitud" class="w-full h-64 object-cover rounded-2xl mb-6" />
+  <div class="space-y-6">
+    <p class="text-lg leading-relaxed">
+      Estamos dispuestos a acompañarle en esta misión. Complete este formulario y en máximo 5 días hábiles nuestro equipo se pondrá en contacto con usted.
+    </p>
+
+    <div class="bg-base-300 rounded-lg p-6 border-l-4 border-orange-400">
+      <h3 class="text-xl font-bold mb-3">Antes de comenzar</h3>
+      <p class="text-base leading-relaxed">
+        Asegúrese de tener a mano la documentación de su organización y una descripción clara del proyecto que necesita desarrollar.
+      </p>
+    </div>
+
+    <h3 class="text-xl font-bold mt-8 mb-6">Formulario de Solicitud</h3>
+
+    <!-- Grid responsive para campos del formulario -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text font-semibold text-base">Nombre de la organización *</span>
+        </label>
+        <input 
+          type="text" 
+          placeholder="Ej: Fundación Esperanza" 
+          class="input input-bordered w-full focus:input-primary" 
+        />
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text font-semibold text-base">Email de contacto *</span>
+        </label>
+        <input 
+          type="email" 
+          placeholder="contacto@ejemplo.org" 
+          class="input input-bordered w-full focus:input-primary" 
+        />
+      </div>
+    </div>
+
+    <div class="form-control mt-6">
+      <label class="label">
+        <span class="label-text font-semibold text-base">Tipo de servicio requerido *</span>
+      </label>
+      <select class="select select-bordered w-full focus:select-primary">
+        <option disabled selected>Seleccione un servicio</option>
+        <option>Desarrollo Web</option>
+        <option>Infraestructura Cloud</option>
+        <option>Consultoría Tech</option>
+        <option>Capacitación</option>
+        <option>Todos los anteriores</option>
+      </select>
+    </div>
+
+    <div class="form-control mt-6">
+      <label class="label flex-col items-start gap-1">
+        <span class="label-text font-semibold text-base">Describa su proyecto *</span>
+        <span class="text-xs text-base-content/60">Mínimo 50 caracteres</span>
+      </label>
+      <textarea
+        class="textarea textarea-bordered w-full h-36 text-base leading-relaxed resize-none focus:outline-none focus:border-orange-400/40 focus:ring-2 focus:ring-orange-400/20"
+        placeholder="Cuéntenos sobre su proyecto, qué problema desea resolver y cómo impactará en su comunidad..."
+      ></textarea>
+    </div>
+
+    <div class="bg-base-300 rounded-lg p-5 mt-6 border-l-4 border-orange-400">
+      <p class="text-sm leading-relaxed flex items-start gap-2">
+        <span class="text-lg">📝</span>
+        <span>Al enviar este formulario acepta compartir su información con GrinTic para evaluar su solicitud.</span>
+      </p>
+    </div>
+
+    <button class="btn btn-lg w-full bg-orange-400 hover:bg-orange-500 text-white border-none shadow-lg mt-8">
+      <.icon name="hero-paper-airplane" class="h-5 w-5" />
+      Enviar Solicitud
+    </button>
+  </div>
+</.side_modal>
+
+<.side_modal
+  id="comunidad-modal"
+  title="Comunidad GrinTic"
+  on_cancel={hide_side_modal("comunidad-modal")}
+>
+  <img src="/images/modals/comunidad.png" alt="Comunidad GrinTic" class="w-full h-64 object-cover rounded-2xl mb-6" />
+  <div class="space-y-6">
+    <p class="text-lg leading-relaxed">
+      Únase a una red vibrante de profesionales tecnológicos y organizaciones sociales que trabajan juntos para transformar comunidades en Latinoamérica.
+    </p>
+
+    <div class="bg-base-300 rounded-lg p-6 border-l-4 border-orange-400">
+      <h3 class="text-xl font-bold mb-3">Nuestra Comunidad</h3>
+      <p class="text-base leading-relaxed">
+        Conectamos desarrolladores, SREs, DevOps y fundaciones para crear impacto social mediante la tecnología. ¡Todos son bienvenidos!
+      </p>
+    </div>
+
+    <h3 class="text-xl font-bold mt-8 mb-4">Impacto en Números</h3>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-base-300 rounded-xl p-6 text-center">
+        <div class="text-4xl font-bold mb-2">3+</div>
+        <div class="flex items-center justify-center gap-2 mb-2">
+          <.icon name="hero-users" class="h-5 w-5" />
+          <div class="font-semibold">Miembros</div>
+        </div>
+        <p class="text-sm text-base-content/70">Desarrolladores activos</p>
+      </div>
+
+      <div class="bg-base-300 rounded-xl p-6 text-center">
+        <div class="text-4xl font-bold mb-2">1+</div>
+        <div class="flex items-center justify-center gap-2 mb-2">
+          <.icon name="hero-building-office" class="h-5 w-5" />
+          <div class="font-semibold">Fundaciones</div>
+        </div>
+        <p class="text-sm text-base-content/70">ONGs apoyadas</p>
+      </div>
+    </div>
+
+    <h3 class="text-xl font-bold mt-8 mb-4">Forma Parte de la Comunidad</h3>
+
+    <div class="space-y-4">
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-base-300 flex items-center justify-center">
+          <.icon name="hero-chat-bubble-left-right" class="h-6 w-6 text-base-content" />
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Discord</h4>
+          <p class="text-base-content/70">Conversaciones en tiempo real y soporte técnico</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-base-300 flex items-center justify-center">
+          <.icon name="hero-envelope" class="h-6 w-6 text-base-content" />
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Lista de Correo</h4>
+          <p class="text-base-content/70">Actualizaciones mensuales y oportunidades</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-base-300 flex items-center justify-center">
+          <.icon name="hero-video-camera" class="h-6 w-6 text-base-content" />
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Meetups Mensuales</h4>
+          <p class="text-base-content/70">Eventos virtuales</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-base-300 dark:bg-orange-950/20 rounded-lg p-6 mt-6 border-l-4 border-orange-500">
+      <div class="flex gap-3">
+        <div>
+          <h4 class="font-bold text-lg mb-2 text-orange-600 dark:text-orange-400">¿Desea unirse?</h4>
+          <p class="text-base-content/90 leading-relaxed">
+            ¡Envíe una solicitud y le agregaremos a nuestros canales de comunicación.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-lg w-full bg-orange-400 hover:bg-orange-500 text-white border-none shadow-lg">
+      <.icon name="hero-users" class="h-5 w-5" />
+      Unirse a la Comunidad
+    </button>
+  </div>
+</.side_modal>
+
+<.side_modal
+  id="requisitos-modal"
+  title="Requisitos"
+  on_cancel={hide_side_modal("requisitos-modal")}
+>
+  <img src="/images/modals/requisitos.png" alt="Requisitos" class="w-full h-64 object-cover rounded-2xl mb-6" />
+  <div class="space-y-6">
+    <p class="text-lg leading-relaxed">
+      Queremos asegurarnos de apoyar a organizaciones que realmente están generando impacto positivo. Estos son los requisitos básicos para acceder a nuestros servicios.
+    </p>
+
+    <div class="bg-base-300 rounded-lg p-6 border-l-4 border-orange-400">
+      <h3 class="text-xl font-bold mb-3">Criterios de Elegibilidad</h3>
+      <p class="text-base leading-relaxed">
+        Revisamos cada solicitud cuidadosamente para asegurar que su organización cumpla con nuestros estándares de impacto social y transparencia.
+      </p>
+    </div>
+
+    <h3 class="text-xl font-bold mt-8 mb-4">Requisitos Principales</h3>
+
+    <div class="space-y-4">
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-400/80 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          1
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Organización sin Fines de Lucro</h4>
+          <p class="text-base-content/70">Debe ser una fundación, ONG o asociación civil legalmente constituida.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-400/80 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          2
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Impacto Social Verificable</h4>
+          <p class="text-base-content/70">Su organización debe demostrar un impacto positivo y medible en la comunidad.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-400/80 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          3
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Compromiso de Uso Responsable</h4>
+          <p class="text-base-content/70">Acuerdo de uso ético de la infraestructura y servicios proporcionados.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-400/80 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          4
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-1">Créditos y Reconocimiento</h4>
+          <p class="text-base-content/70">Incluir los créditos de GrinTic en su proyecto o sitio web de forma visible.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="text-xl font-bold mt-8 mb-4">Documentación Requerida</h3>
+
+    <div class="bg-base-300 rounded-lg p-6">
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-base-300 flex items-center justify-center mt-0.5">
+            <.icon name="hero-document-text" class="h-5 w-5 text-base-content" />
+          </div>
+          <div>
+            <div class="font-semibold">Documento de constitución legal</div>
+            <p class="text-sm text-base-content/70">Acta de fundación o documento que acredite la personalidad jurídica</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-base-300 flex items-center justify-center mt-0.5">
+            <.icon name="hero-identification" class="h-5 w-5 text-base-content" />
+          </div>
+          <div>
+            <div class="font-semibold">RUT o identificación fiscal</div>
+            <p class="text-sm text-base-content/70">Documento de identificación tributaria de la organización</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-base-300 flex items-center justify-center mt-0.5">
+            <.icon name="hero-envelope" class="h-5 w-5 text-base-content" />
+          </div>
+          <div>
+            <div class="font-semibold">Carta de presentación del proyecto</div>
+            <p class="text-sm text-base-content/70">Descripción de tu organización y el impacto que generas</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-base-300 flex items-center justify-center mt-0.5">
+            <.icon name="hero-clipboard-document-list" class="h-5 w-5 text-base-content" />
+          </div>
+          <div>
+            <div class="font-semibold">Plan de uso de la infraestructura</div>
+            <p class="text-sm text-base-content/70">Cómo planeas utilizar los servicios de GrinTic</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bg-orange-50 dark:bg-orange-950/20 rounded-lg p-6 border-l-4 border-orange-500">
+      <div class="flex gap-3">
+        <div>
+          <h4 class="font-bold text-lg mb-2 text-orange-600 dark:text-orange-400">Nota:</h4>
+          <p class="text-base-content/90 leading-relaxed">
+            Prepara toda la documentación antes de enviar tu solicitud. Esto acelerará el proceso de evaluación.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-lg w-full bg-orange-400 hover:bg-orange-500 text-white border-none shadow-lg">
+      <.icon name="hero-paper-airplane" class="h-5 w-5" />
+      Iniciar Solicitud
+    </button>
+  </div>
+</.side_modal>
